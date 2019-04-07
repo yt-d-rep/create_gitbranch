@@ -4,7 +4,6 @@ RUN apt-get update \
  # install required packages
  && apt-get install -y \
     build-essential \ 
-    git \
     nginx \
     python3-dev \
     wget \
@@ -15,13 +14,14 @@ RUN apt-get update \
  && pip install flask \ 
     uwsgi \
     requests \
- && mkdir /python \
  # forward request and error logs to docker log collector
  && ln -sf /dev/stdout /var/log/nginx/access.log \
- && ln -sf /dev/stderr /var/log/nginx/error.log
+ && ln -sf /dev/stderr /var/log/nginx/error.log \
+ # remove apt-get cache
+ && apt-get clean
 
 COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
-COPY ./app/* /python/
+COPY ./app /python
 COPY ./entrypoint.sh /
 
 EXPOSE 80
