@@ -20,7 +20,7 @@ RUN apt-get update \
  && ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
-COPY ./app/* /python
+COPY ./app/* /python/
 COPY ./entrypoint.sh /
 
 EXPOSE 80
