@@ -14,7 +14,7 @@ RUN apt-get update \
  # install python modules
  && pip install flask \ 
     uwsgi \
-    githubpy \
+    slackweb \
     requests \
  && mkdir /python \
  # forward request and error logs to docker log collector
