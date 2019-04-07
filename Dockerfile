@@ -14,7 +14,6 @@ RUN apt-get update \
  # install python modules
  && pip install flask \ 
     uwsgi \
-    slackweb \
     requests \
  && mkdir /python \
  # forward request and error logs to docker log collector
@@ -28,4 +27,4 @@ COPY ./entrypoint.sh /
 EXPOSE 80
 
 # run
-# ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
