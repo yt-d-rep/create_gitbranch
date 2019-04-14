@@ -11,7 +11,8 @@ RUN apt-get update \
  && ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
  && dpkg-reconfigure -f noninteractive tzdata \
  # install python modules
- && pip install flask \ 
+ && pip install beautifulsoup4 \
+    flask \ 
     uwsgi \
     requests \
  # forward request and error logs to docker log collector
